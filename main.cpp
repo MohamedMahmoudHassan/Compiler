@@ -10,10 +10,8 @@ using namespace std;
 
 int main()
 {
-	Lexical x("code");
+	Lexical x("Test");
 	vector<string> v = x.getTokens();
-	for (auto &i : v)
-		cout << i << " ";
-	cout << "\n\n";
+
 
 }
