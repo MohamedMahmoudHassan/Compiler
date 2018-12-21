@@ -9,7 +9,13 @@ using namespace std;
 
 #ifndef ANALYSER
 #define ANALYSER	
+/*
 
+make sure that the code returns a vector of string that contains the tokens
+or
+return a string that contains a single string  "notValid" which means that a syntax error has been found 
+
+*/
 class Lexical
 {
 public:
@@ -67,6 +73,12 @@ public:
 	{
 		getline(this->file, this->allFile, '\0'); // read all  the file and save it in one string
 	}
+	bool isvalidchar(char x)
+	{
+		if (x == '_')
+			return 1;
+		return ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x >= '0' && x <= '9'));
+	}
 	void buildTokens()
 	{
 		// function to seperat the input and build the tokens vector
@@ -75,9 +87,17 @@ public:
 		string eqseprators = "><=/%+-*/";
 		for (int currentChar = 0; currentChar < allFile.size(); currentChar++)
 		{
+			
+
 			if (seperators.find(allFile[currentChar]) == string::npos)
 			{
-				holder += allFile[currentChar];
+				if (isvalidchar(allFile[currentChar]))
+					holder += allFile[currentChar];
+				else {
+					tokens.clear();
+					tokens.push_back("notValid");
+					return;
+				}
 			}
 			else
 			{
@@ -109,13 +129,17 @@ public:
 						}
 						else
 						{
+
 							tokens.clear();
+							tokens.push_back("notValid");
 							return;
 						}
 						
 					}
 					else {
+
 						tokens.clear();
+						tokens.push_back("notValid");
 						return;
 					}
 				}
