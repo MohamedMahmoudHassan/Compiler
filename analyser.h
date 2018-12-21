@@ -105,8 +105,14 @@ public:
 						if (allFile[currentChar + 1] == '=')
 						{
 							tokens.push_back(tok["!="]);
+							currentChar++;
 						}
-						currentChar++;
+						else
+						{
+							tokens.clear();
+							return;
+						}
+						
 					}
 					else {
 						tokens.clear();
