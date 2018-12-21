@@ -1,4 +1,4 @@
-func int (x > 5)
+func int myfunc_ (x > 5)
 {
 x = 7 ;
 return 5 ;
