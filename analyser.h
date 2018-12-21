@@ -8,12 +8,12 @@
 using namespace std;
 
 #ifndef ANALYSER
-#define ANALYSER	
+#define ANALYSER
 /*
 
 make sure that the code returns a vector of string that contains the tokens
 or
-return a string that contains a single string  "notValid" which means that a syntax error has been found 
+return a string that contains a single string  "notValid" which means that a syntax error has been found
 
 */
 class Lexical
@@ -42,7 +42,7 @@ public:
 		tok.insert({ "for" , "for" });
 		tok.insert({ "else" , "else" });
 		tok.insert({ "elseif" , "elseif" });
-		tok.insert({ "=" , "assop" });
+		tok.insert({ "=" , "=" });
 		tok.insert({ "/=" , "assop" });
 		tok.insert({ "-=" , "assop" });
 		tok.insert({ "+=" , "assop" });
@@ -88,7 +88,7 @@ public:
 		string eqseprators = "><=/%+-*/";
 		for (int currentChar = 0; currentChar < allFile.size(); currentChar++)
 		{
-			
+
 
 			if (seperators.find(allFile[currentChar]) == string::npos)
 			{
@@ -118,7 +118,7 @@ public:
 
 					}
 				}
-				holder = "";  // clearing the string to be filled again 
+				holder = "";  // clearing the string to be filled again
 				if (allFile[currentChar] == '!')
 				{
 					if (currentChar < allFile.size() - 1)
@@ -135,7 +135,7 @@ public:
 							tokens.push_back("notValid");
 							return;
 						}
-						
+
 					}
 					else {
 

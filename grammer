@@ -1,77 +1,32 @@
 S
-Stmt S
-whileBody S
-forBody S
-ifBody S
-funcBody S
+ExpS ;
+
+ExpS
+Val Exp
+
+Exp
+Expop ExpS
 eps
 
-Stmt
-identifier  X
-const ;
-init ;
 
-X
-;
-assOP stmt
-comp ;
-
-Comp
-coco Z
-
-Z
-OP coco
-eps
-
-Coco
-const
+Val
 identifier
+const
 
-init
-dataType assignment
+Assiop
+assop
+=
+
+Expop
+arithop
+logicop
+
+$
+decleration = assignment
+identifier assop assignment
 
 assignment
-identifier nxt
-
-nxt
-= stmt
-
-whileBody
-while ( comp )  { loopPath }
-
-loopPath
-A
-break ;
-continue ;
-
-A
-stmt A
-whileBody  A
-ifBody A
-forBody A
-eps
-
-ifBody
-if ifControl
-
-ifControl
-( comp ) { A } afterIF
-
-afterIF
-elseif ifControl
-else  { A }
-eps
-
-forBody
-for (init ; comp ; assignment ) { loopPath }
-
-funcBody
-func identifier ( ) { B }
-
-B
-A B
-return retBody
-
-retBody
-stmt ;
-$
+identifier
+identifier assop assignment
+identifier assop val
+identifier

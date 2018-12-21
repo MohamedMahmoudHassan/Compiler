@@ -16,11 +16,11 @@ struct node{
 map<string, vector<node> > mp;
 map<string, bool> eps, trm;
 
-string term[] = {"identifier", "const", ";", "assOP", "OP", "dataType", "=", "while", "(", ")", "{", "}", "break", "continue", "if", "elseif", "else", "for", "return", "func"};
+string term[] = {"identifier", "const", ";", "assop", "logicop", "compop", "arithop","datatype", "=", "while", "(", ")", "{", "}", "break", "continue", "if", "elseif", "else", "for", "return", "func"};
 string line, nonTrm;
 
 
-void grammer_genrator(){
+void grammer_generator(){
 
   //identifing terminals
   for(string s : term)
@@ -30,10 +30,9 @@ void grammer_genrator(){
   freopen("grammer", "r", stdin);
 
   while(cin >> nonTrm){
-
-    if(nonTrm == "?")       //end of the file
+    if(nonTrm == "$")       //end of the file
       break;
-
+    getline(cin, line);
     while(getline(cin, line)){
       if(line == "")        //end of grammer of non-terminal
         break;
@@ -46,10 +45,8 @@ void grammer_genrator(){
       string word;
 
       node new_node;      //each node contain one of the rules to this non-terminal
-      while(s >> word){
+      while(s >> word)
         new_node.add(word);
-        cout << word << ' ' << trm[word] << endl;
-      }
 
       mp[nonTrm].push_back(new_node);
     }
