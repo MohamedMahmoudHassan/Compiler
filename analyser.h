@@ -65,6 +65,7 @@ public:
 		tok.insert({ ")" , ")" });
 		tok.insert({ ";" , ";" });
 		tok.insert({ "func" , "func" });
+		tok.insert({ "return" , "return" });
 		tok.insert({ "-1", "identifier" });
 		buildTokens();
 

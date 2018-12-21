@@ -1,1 +1,5 @@
-x = s +  . 5 ;
+func int (x > 5)
+{
+x = 7 ;
+return 5 ;
+}
