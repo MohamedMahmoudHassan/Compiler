@@ -1,5 +1,28 @@
 S
-ExpS ;
+Out
+In
+
+In
+Normal ; In
+Special In
+eps
+
+Out
+func identifier ( ExpS ) { In }
+
+Normal
+Comparison
+Assignment
+Decleration
+ExpS
+return ExpS
+
+Comparison
+ExpS ComparisonCmp
+
+ComparisonCmp
+compop ExpS
+eps
 
 ExpS
 Val Exp
@@ -7,7 +30,6 @@ Val Exp
 Exp
 Expop ExpS
 eps
-
 
 Val
 identifier
@@ -20,6 +42,25 @@ assop
 Expop
 arithop
 logicop
+
+Special
+if IfBody
+while ( Comparison ) GBody
+do { In } while ( Comparison ) ;
+for ( ExpS ; Comparison ; ExpS ) GBody
+
+IfBody
+( Comparison ) GBody IfComp
+
+GBody
+{ In }
+Normal ;
+Special
+
+IfComp
+elseif IfBody
+else GBody
+eps
 
 $
 decleration = assignment

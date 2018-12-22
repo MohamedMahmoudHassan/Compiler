@@ -16,13 +16,14 @@ void missmatch(){
 
 
 bool match(string u){
-	cout<<"IN "<< u << ' ' << mp[u].size() << endl;
+//	cout<<"IN "<< u << ' ' << mp[u].size()<<endl;
+
 	for(node search_node : mp[u]){
 			bool ret = 0;
 			for(string s : search_node.v){
 				if(i == tokens.size())
 					missmatch();
-				cout<<s<<' '<<tokens[i]<<endl;
+//				cout<<s<<' '<<tokens[i]<<endl;
 				if((trm[s] && (s == tokens[i])) || (!trm[s] && match(s)) )
 					i += trm[s], ret = 1;
 				else if(!ret)
