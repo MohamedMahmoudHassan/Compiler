@@ -36,6 +36,7 @@ public:
 		tok.insert({ "short", "datatype" });
 		tok.insert({ "char", "datatype" });
 		tok.insert({ "string", "datatype" });
+		tok.insert({ "bool", "datatype" });
 		tok.insert({ "void", "datatype" });
 		tok.insert({ "if", "if" });
 		tok.insert({ "do", "do" });
@@ -172,14 +173,7 @@ public:
 			}
 
 		}
-		if (holder.size()) {
-			if (holder[0] >= '0' && holder[0] <= '9')
-				tokens.push_back("const");
-			else
-				tokens.push_back(tok["-1"]);
-
-		}
-
+		
 	}
 	vector<string> getTokens()
 	{

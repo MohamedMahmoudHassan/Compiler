@@ -5,41 +5,53 @@ In
 In
 Normal ; In
 Special In
+; In
 eps
 
 Out
-func identifier ( ExpS ) { In }
+func identifier ( Exp ) { In } S
 
 Normal
+Decleration
+OpDecleration
+return ExpS
+
+Decleration
+datatype identifier AssDecleration
+
+AssDecleration
+= OpDecleration
+eps
+
+OpDecleration
 identifier OpIdentifier
 const OpConst
-Decleration
-return ExpS
+
 
 OpIdentifier
 Assignment
 Comparison
 Exp
 
-OpConst
-Comparison
-Exp
+Assignment
+Assop OpDecleration
 
 Comparison
 compop Val Exp
-
-Assignment
-= identifier
 
 Exp
 Expop Val OpConst
 eps
 
+OpConst
+Comparison
+Exp
+
 Val
 identifier
 const
 
-Assiop
+Assop
 assop
 =
 
@@ -49,17 +61,26 @@ logicop
 
 Special
 if IfBody
-while ( OpConst ) GBody
-do { In } while ( OpConst ) ;
-for ( ExpS ; OpConst ; ExpS ) GBody
+while ( OpDecleration ) GBody
+do { In } while ( OpDecleration ) ;
+for ( ForParm1 ; FormParm2 ; FormParm2 ) GBody
+
+FormParm2
+OpDecleration
+eps
+
+ForParm1
+Decleration
+FormParm2
 
 IfBody
-( OpConst ) GBody IfComp
+( OpDecleration ) GBody IfComp
 
 GBody
 { In }
 Normal ;
 Special
+;
 
 IfComp
 elseif IfBody
@@ -67,11 +88,3 @@ else GBody
 eps
 
 $
-decleration = assignment
-identifier assop assignment
-
-assignment
-identifier
-identifier assop assignment
-identifier assop val
-identifier
