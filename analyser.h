@@ -88,7 +88,7 @@ public:
 	}
 	int isconst(string & checker)
 	{
-		
+
 		bool allDigits = 1 , dotFound = 0;
 		for (int i = 0; i < checker.size(); i++)
 		{
@@ -99,16 +99,16 @@ public:
 			}
 			if (checker[i] == '.' && dotFound == 1)
 			{
-				
+
 				return -1;
 			}
 			if (checker[i] == '.')
 				dotFound = 1;
-			
+
 		}
 		if (allDigits)
 			return 1;
-		
+
 		if (checker[0] == '"')
 		{
 			if (checker[checker.size() - 1] == '"' && checker.size() > 1)
@@ -120,7 +120,7 @@ public:
 	void buildTokens()
 	{
 
-		
+
 		// function to seperat the input and build the tokens vector
 		string seperators = "; !=><}{()+-/*\n\t"; // string that contain all the seperators
 		string holder = ""; // tmp string to fill it as we traverse the input file char by char
@@ -144,16 +144,21 @@ public:
 				if (tok.find(holder) != tok.end()) // the current string is in my tokens
 				{
 					tokens.push_back(tok[holder]); // adding the token to the vector of tokens
+					code.push_back(holder);
 
 
 				}
 				else {
 					// the current is identifier
 					if (holder.size()) {
-						if (isconst(holder) == 1)
+						if (isconst(holder) == 1){
 							tokens.push_back("const");
-						else if (isconst(holder) == 0)
+							code.push_back(holder);
+						}
+						else if (isconst(holder) == 0){
 							tokens.push_back(tok["-1"]);
+							code.push_back(holder);
+						}
 						else {
 							tokens.clear();
 							tokens.push_back("notValid");
@@ -163,7 +168,7 @@ public:
 					}
 				}
 				holder = "";  // clearing the string to be filled again
-				
+
 				if (allFile[currentChar] == '!')
 				{
 					if (currentChar < allFile.size() - 1)
@@ -171,6 +176,7 @@ public:
 						if (allFile[currentChar + 1] == '=')
 						{
 							tokens.push_back(tok["!="]);
+							code.push_back("!=");
 							currentChar++;
 						}
 						else
@@ -200,34 +206,45 @@ public:
 						{
 							x += "=";
 							tokens.push_back(tok[x]);
+							code.push_back(x);
 							currentChar++;
 						}
-						else tokens.push_back(tok[x]);
-
+						else{
+							tokens.push_back(tok[x]);
+							code.push_back(x);
+						}
 					}
-					else tokens.push_back(tok[x]);   
+					else{
+						tokens.push_back(tok[x]);
+						code.push_back(x);
+					}
 				}
 				else if (allFile[currentChar] != ' ' &&  allFile[currentChar] != '\n' && allFile[currentChar] != '\t')
 				{
 					string x = "";
 					x += allFile[currentChar];
 					tokens.push_back(tok[x]);
+					code.push_back(x);
 				}
 			}
 
 		}
-		
+
 	}
 	vector<string> getTokens()
 	{
 		return tokens;
 	}
+	vector<string> getCode()
+	{
+		return code;
+	}
 private:
 	fstream file;
 	string allFile;
 	map<string, string> tok;
-	vector<string> tokens;
-	 
+	vector<string> tokens, code;
+
 };
 
 

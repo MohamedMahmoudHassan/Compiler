@@ -1,12 +1,5 @@
+#include <bits/stdc++.h>
 
-//#define  _CRT_SECURE_NO_WARNINGS
-#include<iostream>
-#include<vector>
-#include<map>
-#include<string>
-#include<utility>
-#include<algorithm>
-#include<fstream>
 using namespace std;
 
 #include "analyser.h"
@@ -16,10 +9,14 @@ int i = 0;
 
 Lexical text("Test");
 vector<string> tokens = text.getTokens();
+vector<string> code = text.getCode();
 vector<string> parseTree;
 
 void missmatch(){
-	cout<<"BAD FUDJE\n";
+	if(i)
+		cout << "Syntax error after " << code[i-1] << endl;
+	else
+		cout << "Syntax error, something missing before " << code[0] << endl;
 	exit(0);
 }
 
@@ -75,7 +72,7 @@ int main()
 
 	if(i + 1 != tokens.size())
 		missmatch();
-	cout<<"BIG FUDJE\n";
+	cout<<"Accepted code\n";
 	cout<<"AST***\n ";
 	for(string s : parseTree)
 		cout << s << ' ';
