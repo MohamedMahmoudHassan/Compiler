@@ -62,6 +62,10 @@ bool match(string u){
 int main()
 {
 	//freopen("txt.out", "w", stdout);
+	if(tokens[0] == "?"){
+		cout << "UnValid syntax, there is no such thing as '" << tokens[1] << "'\n'";
+		return 0;
+	}
 	tokens.push_back("$");
 	for(string s : tokens)
 		cout << s << ' ';

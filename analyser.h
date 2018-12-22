@@ -134,8 +134,10 @@ public:
 				if (isvalidchar(allFile[currentChar]))
 					holder += allFile[currentChar];
 				else {
+					holder += allFile[currentChar];
 					tokens.clear();
-					tokens.push_back("notValid");
+					tokens.push_back("?");
+					tokens.push_back(holder);
 					return;
 				}
 			}
@@ -161,7 +163,8 @@ public:
 						}
 						else {
 							tokens.clear();
-							tokens.push_back("notValid");
+							tokens.push_back("?");
+							tokens.push_back(holder);
 							return;
 						}
 
@@ -183,7 +186,8 @@ public:
 						{
 
 							tokens.clear();
-							tokens.push_back("notValid");
+							tokens.push_back("?");
+							tokens.push_back("!");
 							return;
 						}
 
@@ -191,7 +195,8 @@ public:
 					else {
 
 						tokens.clear();
-						tokens.push_back("notValid");
+						tokens.push_back("?");
+						tokens.push_back("!");
 						return;
 					}
 				}
