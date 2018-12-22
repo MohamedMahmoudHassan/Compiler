@@ -11,24 +11,28 @@ Out
 func identifier ( ExpS ) { In }
 
 Normal
-Comparison
-Assignment
+identifier OpIdentifier
+const OpConst
 Decleration
-ExpS
 return ExpS
 
+OpIdentifier
+Assignment
 Comparison
-ExpS ComparisonCmp
+Exp
 
-ComparisonCmp
-compop ExpS
-eps
+OpConst
+Comparison
+Exp
 
-ExpS
-Val Exp
+Comparison
+compop Val Exp
+
+Assignment
+= identifier
 
 Exp
-Expop ExpS
+Expop Val OpConst
 eps
 
 Val
@@ -45,12 +49,12 @@ logicop
 
 Special
 if IfBody
-while ( Comparison ) GBody
-do { In } while ( Comparison ) ;
-for ( ExpS ; Comparison ; ExpS ) GBody
+while ( OpConst ) GBody
+do { In } while ( OpConst ) ;
+for ( ExpS ; OpConst ; ExpS ) GBody
 
 IfBody
-( Comparison ) GBody IfComp
+( OpConst ) GBody IfComp
 
 GBody
 { In }
