@@ -1,5 +1,10 @@
-#include <bits/stdc++.h>
-
+#include<iostream>
+#include<vector>
+#include<map>
+#include<string>
+#include<utility>
+#include<algorithm>
+#include<fstream>
 using namespace std;
 
 #include "analyser.h"
