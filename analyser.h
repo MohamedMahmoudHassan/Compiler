@@ -5,6 +5,10 @@
 #include<utility>
 #include<algorithm>
 #include<fstream>
+#include<stdio.h>
+#include<stdlib.h>
+#include <sstream>      // std::stringstream, std::stringbuf
+
 using namespace std;
 
 #ifndef ANALYSER
@@ -78,12 +82,45 @@ public:
 	}
 	bool isvalidchar(char x)
 	{
-		if (x == '_')
+		if (x == '_' || x == '.' || x =='"' )
 			return 1;
 		return ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x >= '0' && x <= '9'));
 	}
+	int isconst(string & checker)
+	{
+		
+		bool allDigits = 1 , dotFound = 0;
+		for (int i = 0; i < checker.size(); i++)
+		{
+			if (!((checker[i] >= '0' && checker[i] <= '9') ||  (checker[i] == '.' )  ))
+			{
+				allDigits = 0;
+				break;
+			}
+			if (checker[i] == '.' && dotFound == 1)
+			{
+				
+				return -1;
+			}
+			if (checker[i] == '.')
+				dotFound = 1;
+			
+		}
+		if (allDigits)
+			return 1;
+		
+		if (checker[0] == '"')
+		{
+			if (checker[checker.size() - 1] == '"' && checker.size() > 1)
+				return 1;
+			else return -1;
+		}
+		return 0;
+	}
 	void buildTokens()
 	{
+
+		
 		// function to seperat the input and build the tokens vector
 		string seperators = "; !=><}{()+-/*\n\t"; // string that contain all the seperators
 		string holder = ""; // tmp string to fill it as we traverse the input file char by char
@@ -113,14 +150,20 @@ public:
 				else {
 					// the current is identifier
 					if (holder.size()) {
-						if (holder[0] >= '0' && holder[0] <= '9')
+						if (isconst(holder) == 1)
 							tokens.push_back("const");
-						else
+						else if (isconst(holder) == 0)
 							tokens.push_back(tok["-1"]);
+						else {
+							tokens.clear();
+							tokens.push_back("notValid");
+							return;
+						}
 
 					}
 				}
 				holder = "";  // clearing the string to be filled again
+				
 				if (allFile[currentChar] == '!')
 				{
 					if (currentChar < allFile.size() - 1)
@@ -162,7 +205,7 @@ public:
 						else tokens.push_back(tok[x]);
 
 					}
-					else tokens.push_back(tok[x]);
+					else tokens.push_back(tok[x]);   
 				}
 				else if (allFile[currentChar] != ' ' &&  allFile[currentChar] != '\n' && allFile[currentChar] != '\t')
 				{
@@ -184,6 +227,7 @@ private:
 	string allFile;
 	map<string, string> tok;
 	vector<string> tokens;
+	 
 };
 
 

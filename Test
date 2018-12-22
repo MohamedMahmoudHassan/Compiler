@@ -1,39 +1,7 @@
-func match(){
-  while(a>a){
-    if(i>i){
-      i+=i;
-    }
-    else
-      i=i*5>i+1;
-  }
-	for(int search_node ;; mp){
-			bool ret = 0;
-			for(string s ;; search_node){
-				if(i == tokens){
-						if(ret);
-						else
-							missmatch;
-				}
-				parseTree;
-				if(s == tokens){
-					ret = 1;
-					parseTree;
-				}
-				elseif(match)
-					ret = 1;
-				elseif(ret){
-					parseTree;
-					break;
-				}
-				else
-					missmatch;
-			}
-
-	}
-
+for( int x = 7 ;  x < 10 ; x+=100)
+{
+		while(1)
+		{
+			play = 100 ;
+		}
 }
-
-do{
-int i=5+5+5+5;
-i=7;
-}while(1);

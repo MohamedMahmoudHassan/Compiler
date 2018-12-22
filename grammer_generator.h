@@ -1,8 +1,6 @@
-#include <bits/stdc++.h>
-
-using namespace std;
 
 #include "analyser.h"
+using namespace std;
 
 struct node{
     vector<string> v;
