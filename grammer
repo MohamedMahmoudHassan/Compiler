@@ -1,19 +1,57 @@
 S
-ExpS ;
+Out
+In
 
-ExpS
-Val Exp
-
-Exp
-Expop ExpS
+In
+Normal ; In
+Special In
+; In
 eps
 
+Out
+func identifier ( Exp ) { In } S
+
+Normal
+Decleration
+OpDecleration
+return ExpS
+
+Decleration
+datatype identifier AssDecleration
+
+AssDecleration
+= OpDecleration
+eps
+
+OpDecleration
+identifier OpIdentifier
+const OpConst
+
+
+OpIdentifier
+Assignment
+Comparison
+Exp
+
+Assignment
+Assop OpDecleration
+
+Comparison
+compop Val Exp
+
+Exp
+Expop Val OpConst
+eps
+
+OpConst
+Comparison
+Exp
 
 Val
 identifier
 const
 
-Assiop
+Assop
 assop
 =
 
@@ -21,12 +59,32 @@ Expop
 arithop
 logicop
 
-$
-decleration = assignment
-identifier assop assignment
+Special
+if IfBody
+while ( OpDecleration ) GBody
+do { In } while ( OpDecleration ) ;
+for ( ForParm1 ; FormParm2 ; FormParm2 ) GBody
 
-assignment
-identifier
-identifier assop assignment
-identifier assop val
-identifier
+FormParm2
+OpDecleration
+eps
+
+ForParm1
+Decleration
+FormParm2
+
+IfBody
+( OpDecleration ) GBody IfComp
+
+GBody
+{ In }
+Normal ;
+Special
+;
+
+IfComp
+elseif IfBody
+else GBody
+eps
+
+$

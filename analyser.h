@@ -36,8 +36,10 @@ public:
 		tok.insert({ "short", "datatype" });
 		tok.insert({ "char", "datatype" });
 		tok.insert({ "string", "datatype" });
+		tok.insert({ "bool", "datatype" });
 		tok.insert({ "void", "datatype" });
 		tok.insert({ "if", "if" });
+		tok.insert({ "do", "do" });
 		tok.insert({ "while", "while" });
 		tok.insert({ "for" , "for" });
 		tok.insert({ "else" , "else" });
@@ -83,7 +85,7 @@ public:
 	void buildTokens()
 	{
 		// function to seperat the input and build the tokens vector
-		string seperators = "; !=><}{()+-/*\n"; // string that contain all the seperators
+		string seperators = "; !=><}{()+-/*\n\t"; // string that contain all the seperators
 		string holder = ""; // tmp string to fill it as we traverse the input file char by char
 		string eqseprators = "><=/%+-*/";
 		for (int currentChar = 0; currentChar < allFile.size(); currentChar++)
@@ -162,7 +164,7 @@ public:
 					}
 					else tokens.push_back(tok[x]);
 				}
-				else if (allFile[currentChar] != ' ' &&  allFile[currentChar] != '\n')
+				else if (allFile[currentChar] != ' ' &&  allFile[currentChar] != '\n' && allFile[currentChar] != '\t')
 				{
 					string x = "";
 					x += allFile[currentChar];
@@ -171,14 +173,7 @@ public:
 			}
 
 		}
-		if (holder.size()) {
-			if (holder[0] >= '0' && holder[0] <= '9')
-				tokens.push_back("const");
-			else
-				tokens.push_back(tok["-1"]);
-
-		}
-
+		
 	}
 	vector<string> getTokens()
 	{

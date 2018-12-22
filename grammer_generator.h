@@ -16,7 +16,7 @@ struct node{
 map<string, vector<node> > mp;
 map<string, bool> eps, trm;
 
-string term[] = {"identifier", "const", ";", "assop", "logicop", "compop", "arithop","datatype", "=", "while", "(", ")", "{", "}", "break", "continue", "if", "elseif", "else", "for", "return", "func"};
+string term[] = {"identifier", "const", ";", "assop", "logicop", "compop", "arithop","datatype", "=", "while", "(", ")", "{", "}", "break", "continue", "if", "elseif", "else", "for", "do", "return", "func"};
 string line, nonTrm;
 
 
