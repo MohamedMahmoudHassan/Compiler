@@ -2,7 +2,7 @@
 # First two phases of the compiler 
 1- lexical analyser 
 
-2- AST(Abtract Parse Tree)
+2- AST(Abtract Syntax Tree)
 
 
 ***********************************************
