@@ -6,21 +6,26 @@
 
 
 ***********************************************
-Given the language grammar in the Grammar file ,( any correct grammar) 
+Given the language grammar in the "grammar" file (any correct grammar) and test code in the "Test" file 
 
 
 the Grammar generator will parse it and build a graph using it 
 
 
-then the *match ()* function will try to check if the given source code is correct or not
+if there is any lexical error  
+
+      "UnValid syntax" will be printed followed by the place where the error was found
+
+
+then the *match ()* function will try to check if the given code is correct or not
 
 
 if so 
 
-      "BIG FUDJE" will be printed followed by the AST
+      "Accepted code" will be printed followed by the AST
 
 
 if not 
 
 
-      "BAD FUDJE" will be printed followed meaning that there's syntax error
+      "Syntax error" will be printed followed the place where the error was found
