@@ -1,6 +1,7 @@
 # Compiler
 # First two phases of the compiler 
-1- lexical analyser \n
+1- lexical analyser 
+
 2- AST(Abtract Parse Tree)
 
 
