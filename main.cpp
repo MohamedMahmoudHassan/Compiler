@@ -1,5 +1,4 @@
-
-//#define  _CRT_SECURE_NO_WARNINGS
+#define  _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<vector>
 #include<map>
@@ -8,6 +7,7 @@
 #include<algorithm>
 #include<fstream>
 using namespace std;
+
 
 #include "analyser.h"
 #include "grammer_generator.h"

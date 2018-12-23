@@ -90,7 +90,7 @@ public:
 	{
 		
 		bool allDigits = 1 , dotFound = 0;
-		for (int i = 0; i < checker.size(); i++)
+		for (int i = 0; i < (int) checker.size(); i++)
 		{
 			if (!((checker[i] >= '0' && checker[i] <= '9') ||  (checker[i] == '.' )  ))
 			{
@@ -125,7 +125,7 @@ public:
 		string seperators = "; !=><}{()+-/*\n\t"; // string that contain all the seperators
 		string holder = ""; // tmp string to fill it as we traverse the input file char by char
 		string eqseprators = "><=/%+-*/";
-		for (int currentChar = 0; currentChar < allFile.size(); currentChar++)
+		for (int currentChar = 0; currentChar < (int)allFile.size(); currentChar++)
 		{
 
 
@@ -166,7 +166,7 @@ public:
 				
 				if (allFile[currentChar] == '!')
 				{
-					if (currentChar < allFile.size() - 1)
+					if (currentChar < (int) allFile.size() - 1)
 					{
 						if (allFile[currentChar + 1] == '=')
 						{
@@ -193,7 +193,7 @@ public:
 				{
 					string x = "";
 					x += allFile[currentChar];
-					if (currentChar < allFile.size() - 1)
+					if (currentChar < (int) allFile.size() - 1)
 					{
 
 						if (allFile[currentChar + 1] == '=')
