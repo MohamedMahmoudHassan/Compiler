@@ -14,7 +14,7 @@ func identifier ( Exp ) { In } S
 Normal
 Decleration
 OpDecleration
-return ExpS
+return OpDecleration
 
 Decleration
 datatype identifier AssDecleration

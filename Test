@@ -1,12 +1,5 @@
-func match(){
-  
-				if(s == tokens){
-					ret = 1;
-					parseTree;
-				}
-				elseif(match)
-					ret = 1;
-				
-	
+func x ()
+{
 
+return  100 ;
 }

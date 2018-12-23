@@ -1,3 +1,4 @@
+
 #define  _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<vector>
@@ -6,6 +7,7 @@
 #include<utility>
 #include<algorithm>
 #include<fstream>
+
 using namespace std;
 
 
@@ -16,10 +18,14 @@ int i = 0;
 
 Lexical text("Test");
 vector<string> tokens = text.getTokens();
+vector<string> code = text.getCode();
 vector<string> parseTree;
 
 void missmatch(){
-	cout<<"BAD FUDJE\n";
+	if(i)
+		cout << "Syntax error after " << code[i-1] << endl;
+	else
+		cout << "Syntax error, something missing before " << code[0] << endl;
 	exit(0);
 }
 
@@ -65,6 +71,10 @@ bool match(string u){
 int main()
 {
 	//freopen("txt.out", "w", stdout);
+	if(tokens[0] == "?"){
+		cout << "UnValid syntax, there is no such thing as '" << tokens[1] << "'\n'";
+		return 0;
+	}
 	tokens.push_back("$");
 	for(string s : tokens)
 		cout << s << ' ';
@@ -75,7 +85,7 @@ int main()
 
 	if(i + 1 != tokens.size())
 		missmatch();
-	cout<<"BIG FUDJE\n";
+	cout<<"Accepted code\n";
 	cout<<"AST***\n ";
 	for(string s : parseTree)
 		cout << s << ' ';
